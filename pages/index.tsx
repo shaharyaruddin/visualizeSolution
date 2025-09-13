@@ -79,19 +79,19 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white bg-[url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURExMYHSggGBolGxMTITEhJSkrOjouFx8zODMsNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAABAAIDBAf/xAAfEAEBAQEAAgMBAQEAAAAAAAAAARECAzEhQXFR0ZH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+zokGVjSwBiOHAGLCgGNBoDGpAO+sAeTvPie3A2gEkgSSwEYoQSOHAEZtPVZBJIEkZACKgBGgEkgSSBJIHVNYgCJgM4cLn11voFacEakBSNxmG3AXfWRwt09fKALCQZwnEDJSBGGQgIOquqwCSMAJrEASIKQWmsgkkCSQJHCAxqc1vjj7roAxYcOAzitxddSf443rQXXW/ikDUgGNCRoFuOdunr5WAysbkWAzIcNjFoLoIyAjImgEZ66PfWfEcwSMhAYZDitBBEAr8NemLQCSBIyEBIsJnIDHXjj+nnnGgTj15rvwvJ3vxPTmD14x5PJn6PJ5M+J7caBtt9qKGAo1FGoCVKwGcaWHAGC2Q9dSONugbdSwgoYcOAGe+sPfWMAzI1E1IAwyGQddAuqypGpAEhOMdXQHV1LCAwogDikakASa6czFIQMcvL39Q+Tr6jiCSQIwNQE1BGoBjUh55aAYsJAYx33g8nk+o54CUhw4ChihBDrrD1cc8oLDIcOAMPo24526CtUhMgKQyGQd3AZ6rKOAlhw4AkOGEBI1gjUBM+TvPXtd9442gEkCSQExGA1G+OVxz9ugJIWgbXHvvfQ6638EgCNKQgMakRBC034ZBnGsOGQBFes/V11nw5gvfsyGQ4CkMhkVAW45k4Aw4pGsAYULQWlQgl11ityOPV0BbvyDiwAcMQA41zzrrOJ/AcY6ccDx867AkmeusA9dY4ddWq7TIAkMOGQA1iwgsXpAAZDIQEjPXf1B31vwzICkaxSHAWGQ4cAMW611RIAwyFYCkVXVxjQXs4iCwpz6638AdXWWsWAE1iwBI1OTI3AXMxoRXqT7AyFOfXf1APfeORUgLCiCMhkUBFIBhkMgtwDuOXXW/i6tqkAY1IsMgDGpE0CjPVNrOAsOLCAkZ66xdd/UYwEVIQMIXVBnqgyHAZhkMiBIWkDGozG4Atya8/V266ebr6/65A79d76ZhkQIxQgsOIgilgIpjroD31jn8owFIcUMAY1IcWAlSyAwlX4AOfff1PQ77316YAtQSNYCKkIC1YUAOFnrrP8BW459XRbpgGNQRqAYbcijHkv0DnaGsWA6FEBDDDgJIgknProD31/GFjUgKQogjIiCSQApnvvAXXUntw66tV60AjFGgMMUMgKFSEAS5+TyZ8T2C77k/XG/PtKATA1AajUjMagHccm+hIAxNYsBoyJAYUgQtSBz6638UiQNSFICUgSSBJIHPyeTP1wtt9hA0UgMaiQNSNSJAcSQOPk8v1HJIEYkDUaiQNxRIFYpEgOLEgf/9k=')] bg-no-repeat bg-cover bg-center">
       <Head>
-        <title>Koshi Labs - Crafting Digital Excellence</title>
+        <title> Visualize Solution - Crafting Digital Excellence</title>
         <meta
           name="description"
-          content="Koshi Labs Pvt. Ltd. is a leading software development company in Birtamode, Jhapa, Nepal specializing in custom software development, AI solutions, web applications, mobile apps, and digital transformation services."
+          content=" Visualize Solution Pvt. Ltd. is a leading software development company in Birtamode, Jhapa, Nepal specializing in custom software development, AI solutions, web applications, mobile apps, and digital transformation services."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="keywords"
-          content="KoshiLabs, Koshi Labs, software development, Birtamode, Jhapa, Nepal, web development, mobile app development, database, performance optimization, AI solutions, custom software, digital transformation, IT services, consulting, Nepali tech company, software company Nepal"
+          content="KoshiLabs,  Visualize Solution, software development, Birtamode, Jhapa, Nepal, web development, mobile app development, database, performance optimization, AI solutions, custom software, digital transformation, IT services, consulting, Nepali tech company, software company Nepal"
         />
         <meta
           property="og:title"
-          content="Koshi Labs Pvt. Ltd. - Premier Software Development Company in Nepal"
+          content=" Visualize Solution Pvt. Ltd. - Premier Software Development Company in Nepal"
         />
         <meta
           property="og:description"
@@ -353,7 +353,7 @@ const HomePage: React.FC = () => {
 
             <div className="space-y-6 text-lg text-black">
               <p className="textFont">
-                Koshi Labs was born from the shared vision of three friends,
+                 Visualize Solution was born from the shared vision of three friends,
                 each with over 9+ years of hands-on experience in software
                 development. We witnessed firsthand the need for reliable,
                 affordable, and high-quality software solutions, particularly in
@@ -361,7 +361,7 @@ const HomePage: React.FC = () => {
               </p>
               <p className="textFont">
                 Frustrated by the disconnect between client needs and the
-                solutions offered, we founded Koshi Labs to bridge that gap. Our
+                solutions offered, we founded  Visualize Solution to bridge that gap. Our
                 mission is simple: to build trust with our clients and deliver
                 software that not only meets their requirements but also exceeds
                 their expectations.

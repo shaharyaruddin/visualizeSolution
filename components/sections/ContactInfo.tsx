@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const ContactInfo = () => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -14,7 +14,7 @@ const ContactInfo = () => {
       <h3 className="text-2xl font-semibold text-black mb-6 border-b border-amber-500/20 pb-4 headingFont">
         Contact Information
       </h3>
-      <motion.div 
+      <motion.div
         className="flex items-start gap-4 group"
         whileHover={{ x: 5 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -24,11 +24,13 @@ const ContactInfo = () => {
         </div>
         <div>
           <p className="text-black mb-1 font-semibold textFont">Address</p>
-          <p className="group-hover:text-black transition-colors textFont">Birtamod, Koshi Province, Nepal</p>
+          <p className="group-hover:text-black transition-colors textFont">
+            Birtamod, Koshi Province, Nepal
+          </p>
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="flex items-start gap-4 group"
         whileHover={{ x: 5 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -38,8 +40,8 @@ const ContactInfo = () => {
         </div>
         <div>
           <p className="font-semibold text-black mb-1 textFont">Phone</p>
-          <a 
-            href="tel:+9779817996672" 
+          <a
+            href="tel:+9779817996672"
             aria-label="Call +977 9817996672"
             className="group-hover:text-black transition-colors textFont"
           >
@@ -47,8 +49,8 @@ const ContactInfo = () => {
           </a>
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="flex items-start gap-4 group"
         whileHover={{ x: 5 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -63,12 +65,12 @@ const ContactInfo = () => {
             aria-label="Email admin@koshilabs.com"
             className="group-hover:text-black transition-colors textFont"
           >
-            admin@koshilabs.com
+            contact@visualizesolution.com
           </a>
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="flex items-start gap-4 group"
         whileHover={{ x: 5 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -78,7 +80,9 @@ const ContactInfo = () => {
         </div>
         <div>
           <p className="font-semibold text-black mb-1 textFont">Website</p>
-          <p className="group-hover:text-black transition-colors textFont">www.koshilabs.com</p>
+          <p className="group-hover:text-black transition-colors textFont">
+            www.visualizesolution.com
+          </p>
         </div>
       </motion.div>
     </motion.div>

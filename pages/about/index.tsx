@@ -16,11 +16,11 @@ const About = () => {
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-black to-gray-600 text-transparent bg-clip-text headingFont">
             Welcome to{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              KoshiLabs
+              Visualize Solution
             </span>
           </h1>
           <p className="text-lg md:text-lg text-gray-700 max-w-3xl mx-auto textFont">
-            At KoshiLabs, we transform ideas into reality with innovative
+            At Visualize Solution, we transform ideas into reality with innovative
             digital solutions, blending creativity, technology, and strategy to
             empower businesses worldwide.
           </p>
@@ -138,7 +138,7 @@ const About = () => {
             Let’s Create Something Extraordinary
           </h3>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8 textFont">
-            Ready to elevate your business with KoshiLabs? Let’s collaborate to
+            Ready to elevate your business with Visualize Solution? Let’s collaborate to
             turn your vision into reality.
           </p>
           <a

@@ -219,7 +219,7 @@ const Navbar: React.FC = () => {
               }}
               className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 font-heading"
             >
-              Koshi<span className="font-light">Labs</span>
+              Visualize<span className="font-light">Solutions</span>
             </a>
             <Button
               variant="ghost"
@@ -275,9 +275,9 @@ const Navbar: React.FC = () => {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              onClick={()=> router.push('/')}
+              onClick={() => router.push("/")}
             >
-              Koshi<span className="font-light">Labs</span>
+              Visualize<span className="font-light">Solution</span>
               <motion.div
                 className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
                 initial={{ scaleX: 0, opacity: 0 }}

@@ -30,7 +30,7 @@ const Footer = () => {
               key={i}
               className="text-[15vw] font-black text-white/[0.03] tracking-tight select-none leading-none h-full flex items-center"
             >
-              KOSHILABS&nbsp;
+               VisualizeSolution&nbsp;
             </span>
           ))}
         </motion.div>
@@ -80,7 +80,7 @@ const Footer = () => {
                   ease: "easeInOut",
                 }}
               >
-                Koshi<span className="font-light">Labs</span>
+                Visualize<span className="font-light">Solutions</span>
                 <motion.div
                   className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
                   initial={{ scaleX: 0, opacity: 0 }}
@@ -104,7 +104,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                aria-label="KoshiLabs Facebook page"
+                aria-label=" Visualize Solution Facebook page"
               >
                 <Facebook className="w-5 h-5" />
               </motion.a>
@@ -113,7 +113,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                aria-label="KoshiLabs X page"
+                aria-label=" Visualize Solution X page"
               >
                 <X className="w-5 h-5" />
               </motion.a>
@@ -122,7 +122,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                aria-label="KoshiLabs LinkedIn page"
+                aria-label=" Visualize Solution LinkedIn page"
               >
                 <Linkedin className="w-5 h-5" />
               </motion.a>
@@ -132,7 +132,7 @@ const Footer = () => {
               className="text-gray-400 text-sm mt-6 textFont"
               whileHover={{ color: "#60A5FA" }}
             >
-              © 2025 KoshiLabs. All rights reserved.
+              © 2025  Visualize Solution. All rights reserved.
             </motion.div>
           </div>
 
