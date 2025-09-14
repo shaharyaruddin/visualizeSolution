@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.2",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.17",
+    "axios": "^1.12.1",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.3",
     "gsap": "^3.13.0",

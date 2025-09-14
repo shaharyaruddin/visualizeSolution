@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import PageWrapper from "@/components/PageWrappper";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
 // gsap.registerPlugin(ScrollTrigger);
 
@@ -57,12 +58,12 @@ const defaultBlog: Blog = {
   readTime: "1 min read",
 };
 
-const Slug = () => {
+const BlogDetail = ({ blog }: any) => {
   const router = useRouter();
-  const { slug } = router.query;
+  const { id } = router.query;
+  console.log("check", id);
   const [toc, setToc] = useState<{ text: string; id: string }[]>([]);
-
-  const blog = typeof slug === "string" ? blogData[slug] || defaultBlog : defaultBlog;
+  const [listOfBlogs, setListOfBlogs] = useState<any[]>([]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -82,7 +83,7 @@ const Slug = () => {
 
       setToc(newToc);
     }
-  }, [slug]);
+  }, [id]);
 
   useGSAP(() => {
     gsap.from(heroRef.current, {
@@ -117,37 +118,54 @@ const Slug = () => {
       duration: 1,
       ease: "power2.out",
     });
-  }, [slug]);
+  }, [id]);
 
   return (
-    <PageWrapper title={blog.title}>
-      <div className="bg-white text-black min-h-screen mt-28" ref={containerRef}>
+    <PageWrapper title={blog?.title}>
+      <div className=" text-black min-h-screen mt-28" ref={containerRef}>
         {/* Hero */}
         <div className="relative h-[60vh] min-h-[400px]" ref={heroRef}>
-          <Image src={blog.image} alt={blog.title} fill className="object-cover opacity-80" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent" />
+          <Image
+            src={blog?.image}
+            alt={blog?.title}
+            fill
+            className="object-cover opacity-80"
+            priority
+          />
+          <div className="absolute " />
           <div className="absolute bottom-0 left-0 right-0 px-4 md:px-12 pb-8 text-white">
             <div className="max-w-4xl mx-auto">
-              <Link href="/blogs" className="text-sm underline hover:text-gray-300">
-                ← Back to Blogs
+              <Link
+                href="/blog?s"
+                className="text-sm underline hover:text-gray-300"
+              >
+                {/* ← Back to blog?s */}
               </Link>
-              <h1 className="text-4xl md:text-5xl font-semibold mt-4 headingFont">{blog.title}</h1>
+              <h1 className="text-4xl md:text-5xl text-black font-semibold mt-4 headingFont">
+                {blog?.title}
+              </h1>
               <div className="flex items-center gap-3 mt-3 text-sm text-gray-300">
-                <span className="textFont">{blog.date}</span> <span>•</span>
-                <span className="textFont">{blog.readTime}</span> <span>•</span>
-                <span className="textFont">By {blog.author}</span>
+                <span className="textFont">{blog?.date}</span> <span>•</span>
+                <span className="textFont">{blog?.readTime}</span>{" "}
+                <span>•</span>
+                <span className="textFont">By {blog?.author}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-16 flex flex-col lg:flex-row gap-10" ref={contentRef}>
+        <div
+          className="max-w-6xl mx-auto px-4 md:px-8 py-16 flex flex-col lg:flex-row gap-10"
+          ref={contentRef}
+        >
           {/* Table of Contents */}
           {toc.length > 0 && (
             <aside className="hidden lg:block w-64 sticky top-24">
               <div className="border-l-4 border-black pl-4 text-sm space-y-2">
-                <h3 className="text-lg font-semibold mb-3">Table of Contents</h3>
+                <h3 className="text-lg font-semibold mb-3">
+                  Table of Contents
+                </h3>
                 {toc.map((item) => (
                   <a
                     key={item.id}
@@ -161,29 +179,28 @@ const Slug = () => {
             </aside>
           )}
 
-          {/* Blog Content */}
           <article className="prose prose-lg dark:prose-invert prose-headings:text-black prose-p:text-gray-800 max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+            <div dangerouslySetInnerHTML={{ __html: blog?.content }} />
           </article>
         </div>
 
-        {/* Author Section */}
         <div
           className="max-w-4xl mx-auto px-4 md:px-8 py-12 border-t border-gray-300"
           ref={authorRef}
         >
           <div className="flex items-center gap-6">
             <Image
-              src={blog.authorImage}
-              alt={blog.author}
+              src={blog?.image}
+              alt={blog?.author}
               width={80}
               height={80}
               className="rounded-full object-cover"
             />
             <div>
-              <h3 className="text-xl font-semibold">{blog.author}</h3>
+              <h3 className="text-xl font-semibold">{blog?.description}</h3>
               <p className="text-gray-600">
-                Passionate about technology and sharing knowledge with the community.
+                Passionate about technology and sharing knowledge with the
+                community.
               </p>
             </div>
           </div>
@@ -193,4 +210,32 @@ const Slug = () => {
   );
 };
 
-export default Slug;
+export default BlogDetail;
+
+export async function getStaticPaths() {
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_FRONT_URL}blogs`);
+  const data = response?.data;
+
+  const paths = data?.AllBlogs?.map((blog: any) => ({
+    params: { id: blog._id },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }: any) {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_FRONT_URL}blogs`
+    );
+    const data = response?.data;
+    const blog = data?.AllBlogs?.find((item: any) => item._id === params.id);
+
+    return {
+      props: { blog: blog || null },
+      revalidate: 60,
+    };
+  } catch (error) {
+    return { props: { blog: null } };
+  }
+}

@@ -1,46 +1,17 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import PageWrapper from "@/components/PageWrappper";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "@/components/common";
-
-const blogs = [
-  {
-    id: 1,
-    title: "Mastering React in 2025",
-    excerpt: "A complete guide to becoming a React expert this year.",
-    image: "/assets/blogs/blog1.jpeg",
-    date: "July 25, 2025",
-  },
-  {
-    id: 2,
-    title: "Next.js 14 Features You Must Know",
-    excerpt: "Explore what's new in Next.js and how it boosts performance.",
-    image: "/assets/blogs/blog2.jpg",
-    date: "July 20, 2025",
-  },
-  {
-    id: 3,
-    title: "TypeScript for JavaScript Devs",
-    excerpt: "Why TypeScript is now a must-know skill.",
-    image: "/assets/blogs/blog3.jpeg",
-    date: "July 18, 2025",
-  },
-  ...Array.from({ length: 7 }).map((_, i) => ({
-    id: i + 4,
-    title: `Blog Post ${i + 4}`,
-    excerpt: "This is a brief description of the blog content.",
-    image: "/assets/blogs/blog1.jpeg",
-    date: `July ${17 - i}, 2025`,
-  })),
-];
+import axios from "axios";
 
 const Blogs = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const [listOfBlogs, setListOfBlogs] = useState<any[]>([]);
 
   useGSAP(() => {
     // gsap.registerPlugin(ScrollTrigger); // ✅ Move here
@@ -69,6 +40,21 @@ const Blogs = () => {
     });
   }, []);
 
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_FRONT_URL}blogs`
+      );
+      setListOfBlogs(response?.data?.AllBlogs);
+    } catch (error) {
+      console.log("error in fetching blogs", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
   return (
     <PageWrapper title="Blogs">
       <div className="min-h-screen px-4 md:px-12 py-24" ref={containerRef}>
@@ -77,7 +63,7 @@ const Blogs = () => {
         </h1>
 
         {/* Top Blog */}
-        <Link href="blogs/mastering-react-in-2025">
+        {/* <Link href="blogs/mastering-react-in-2025">
           <div className="bg-gray-100 dark:bg-gray-900 p-6 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 mb-16 transition-all duration-300 hover:shadow-2xl">
             <Image
               src={blogs[0].image}
@@ -98,12 +84,12 @@ const Blogs = () => {
               </p>
             </div>
           </div>
-        </Link>
+        </Link> */}
 
         {/* Blog Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.slice(1, 11).map((blog, index) => (
-            <Link href={`/blogs/${slugify(blog.title)}`} key={blog.id}>
+          {listOfBlogs?.map((blog, index) => (
+            <Link href={`/blogs/${blog?._id}`} key={blog.id}>
               <div
                 className="bg-gray-100 dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
                 ref={(el) => {

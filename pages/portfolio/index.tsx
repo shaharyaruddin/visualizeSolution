@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import PageWrapper from "@/components/PageWrappper";
+import axios from "axios";
 
 // Register GSAP plugin
 // gsap.registerPlugin(ScrollTrigger);
@@ -15,59 +15,12 @@ import PageWrapper from "@/components/PageWrappper";
 interface PortfolioItem {
   title: string;
   description: string;
-  images: string[];
+  image: string[];
   category: string;
   link: string;
 }
 
-const portfolioItems: PortfolioItem[] = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A scalable online store with seamless payment integration and user-friendly interface.",
-    images: [
-      "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-    ],
-    category: "Web Development",
-    link: "https://example.com/ecommerce",
-  },
-  {
-    title: "AI Dashboard",
-    description:
-      "An advanced analytics dashboard powered by AI for real-time data insights.",
-    images: [
-      "https://images.unsplash.com/photo-1551288049-b1bd52206d29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-    ],
-    category: "Data Analytics",
-    link: "https://example.com/aidashboard",
-  },
-  {
-    title: "Mobile Banking App",
-    description:
-      "A secure mobile banking application with intuitive design and robust features.",
-    images: [
-      "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1556740749-887f6717d7e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-    ],
-    category: "Mobile Development",
-    link: "https://example.com/bankingapp",
-  },
-  {
-    title: "Cloud CRM Solution",
-    description:
-      "A cloud-based CRM system for streamlined customer relationship management.",
-    images: [
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1556741533-f6acd647d2fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-    ],
-    category: "Cloud Computing",
-    link: "https://example.com/crm",
-  },
-];
-
-const Portfolio = () => {
+const Portfolio = ({ listOfPortfolio }: any) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
@@ -145,14 +98,14 @@ const Portfolio = () => {
       >
         <div className="absolute inset-0 " />
         <h2 className="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-black headingFont mb-10">
-          Our {" "}
+          Our{" "}
           <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Portfolio
           </span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {portfolioItems.map((item, index) => (
+          {listOfPortfolio?.map((item: any, index: any) => (
             <div
               key={index}
               ref={(el) => {
@@ -163,7 +116,7 @@ const Portfolio = () => {
             >
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={item.images[0]}
+                  src={item.image[0]}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
@@ -209,7 +162,7 @@ const Portfolio = () => {
                 pagination={{ clickable: true }}
                 className="w-full h-96"
               >
-                {selectedItem.images.map((img: string, idx: number) => (
+                {selectedItem.image.map((img: string, idx: number) => (
                   <SwiperSlide key={idx}>
                     <img
                       src={img}
@@ -228,3 +181,10 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
+export async function getServerSideProps() {
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_FRONT_URL}portfolio/portfolioLists`
+  );
+  return { props: { listOfPortfolio: response.data.PorfolioList } };
+}
