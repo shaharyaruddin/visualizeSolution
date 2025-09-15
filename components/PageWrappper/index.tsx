@@ -54,7 +54,7 @@ const PageWrapper = ({
                   key={i}
                   className="text-[15vw] font-black text-white/[0.03] tracking-tight select-none leading-none h-full flex items-center"
                 >
-                  KOSHILABS&nbsp;
+                  Visualize Solution&nbsp;
                 </span>
               ))}
             </motion.div>
@@ -82,7 +82,7 @@ const PageWrapper = ({
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-              {/* KoshiLabs Text */}
+              {/* Visualize Solution Text */}
               <div className="text-center md:text-left">
                 <motion.div
                   className="flex items-center justify-center md:justify-start mb-4"
@@ -124,29 +124,29 @@ const PageWrapper = ({
                   whileHover={{ opacity: 1 }}
                 >
                   <motion.a
-                    href="https://www.facebook.com/koshilabs"
+                    href="https://www.facebook.com/Visualize Solution"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                     whileHover={{ y: -3, scale: 1.2 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    aria-label="KoshiLabs Facebook page"
+                    aria-label="Visualize Solution Facebook page"
                   >
                     <Facebook className="w-5 h-5" />
                   </motion.a>
                   <motion.a
-                    href="https://x.com/koshilabs"
+                    href="https://x.com/Visualize Solution"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                     whileHover={{ y: -3, scale: 1.2 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    aria-label="KoshiLabs X page"
+                    aria-label="Visualize Solution X page"
                   >
                     <X className="w-5 h-5" />
                   </motion.a>
                   <motion.a
-                    href="https://www.linkedin.com/company/koshilabs"
+                    href="https://www.linkedin.com/company/Visualize Solution"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                     whileHover={{ y: -3, scale: 1.2 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    aria-label="KoshiLabs LinkedIn page"
+                    aria-label="Visualize Solution LinkedIn page"
                   >
                     <Linkedin className="w-5 h-5" />
                   </motion.a>
@@ -156,7 +156,7 @@ const PageWrapper = ({
                   className="text-gray-400 text-sm mt-6 textFont"
                   whileHover={{ color: "#60A5FA" }}
                 >
-                  © 2025 KoshiLabs. All rights reserved.
+                  © 2025 Visualize Solution. All rights reserved.
                 </motion.div>
               </div>
 
@@ -174,7 +174,7 @@ const PageWrapper = ({
                     { text: "Testimonials", href: "#testimonials" },
                     { text: "FAQ", href: "#faq" },
                     { text: "Contact Us", href: "#contact" },
-                    { text: "Email Us", href: "mailto:koshilabs@gmail.com" },
+                    { text: "Email Us", href: "mailto:Visualize Solution@gmail.com" },
                   ].map((link, index) => (
                     <motion.a
                       key={index}
@@ -242,11 +242,11 @@ const PageWrapper = ({
                     </div>
                     <span>
                       <a
-                        href="mailto:admin@koshilabs.com"
-                        aria-label="Email admin@koshilabs.com"
+                        href="mailto:admin@Visualize Solution.com"
+                        aria-label="Email admin@Visualize Solution.com"
                         className="textFont"
                       >
-                        admin@koshilabs.com
+                        admin@Visualize Solution.com
                       </a>
                     </span>
                   </motion.div>

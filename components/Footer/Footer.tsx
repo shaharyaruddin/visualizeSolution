@@ -58,7 +58,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-          {/* KoshiLabs Text */}
+          {/* Visualize Solution Text */}
           <div className="text-center md:text-left">
             <motion.div
               className="flex items-center justify-center md:justify-start mb-4"
@@ -100,7 +100,7 @@ const Footer = () => {
               whileHover={{ opacity: 1 }}
             >
               <motion.a
-                href="https://www.facebook.com/koshilabs"
+                href="https://www.facebook.com/Visualize Solution"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -109,7 +109,7 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="https://x.com/koshilabs"
+                href="https://x.com/Visualize Solution"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -118,7 +118,7 @@ const Footer = () => {
                 <X className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/company/koshilabs"
+                href="https://www.linkedin.com/company/Visualize Solution"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 whileHover={{ y: -3, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -150,7 +150,7 @@ const Footer = () => {
                 { text: "Testimonials", href: "#testimonials" },
                 { text: "FAQ", href: "#faq" },
                 { text: "Contact Us", href: "#contact" },
-                { text: "Email Us", href: "mailto:koshilabs@gmail.com" },
+                { text: "Email Us", href: "mailto:Visualize Solution@gmail.com" },
               ].map((link, index) => (
                 <motion.a
                   key={index}
@@ -215,11 +215,11 @@ const Footer = () => {
                 </div>
                 <span>
                   <a
-                    href="mailto:admin@koshilabs.com"
-                    aria-label="Email admin@koshilabs.com"
+                    href="mailto:admin@Visualize Solution.com"
+                    aria-label="Email admin@Visualize Solution.com"
                     className="textFont"
                   >
-                    admin@koshilabs.com
+                    admin@Visualize Solution.com
                   </a>
                 </span>
               </motion.div>
