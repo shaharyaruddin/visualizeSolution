@@ -21,14 +21,20 @@ const FaqItem: React.FC<FaqItemProps> = ({
         onClick={onClick}
         whileTap={{ scale: 0.995 }}
       >
-        <h3 className={`text-lg font-medium pr-4 textFont ${isOpen ? 'text-blue-400' : 'text-black'}`}>
+        <h3
+          className={`text-lg font-medium pr-4 font-heading ${
+            isOpen ? "text-blue-400" : "text-black"
+          }`}
+        >
           {question}
         </h3>
 
         <motion.div
           animate={{
             rotate: isOpen ? 180 : 0,
-            backgroundColor: isOpen ? "rgba(96, 165, 250, 0.2)" : "rgba(255, 255, 255, 0.1)",
+            backgroundColor: isOpen
+              ? "rgba(96, 165, 250, 0.2)"
+              : "rgba(255, 255, 255, 0.1)",
           }}
           transition={{ duration: 0.3 }}
           className="p-1.5 rounded-full flex items-center justify-center"
@@ -59,9 +65,7 @@ const FaqItem: React.FC<FaqItemProps> = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="pb-6 text-black textFont">
-              {answer}
-            </div>
+            <div className="pb-6 text-black font-manrope">{answer}</div>
           </motion.div>
         )}
       </AnimatePresence>

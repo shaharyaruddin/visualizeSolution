@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* globals.css */ 
+
+.font-heading {
+  font-family: var(--font-heading); /* Use the variable you defined */
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 0%; /* Black */
@@ -36,14 +43,6 @@
   }
   html {
     scroll-behavior: smooth;
-  }
-
-  .headingFont {
-    font-family: var(--font-heading);
-  }
-
-  .textFont {
-    font-family: var(--font-text);
   }
 
   /* Dock effect styles */

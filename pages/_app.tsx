@@ -14,11 +14,11 @@ import localFont from "next/font/local"; // ✅ You missed this import
 //   variable: "--font-manrope",
 // });
 
-// const headingFont = localFont({
-//   src: "../src/fonts/Poppins-SemiBold.ttf", // ✅ Correct path from /src/app or /src/pages
-//   display: "swap",
-//   variable: '--font-heading', // 👈 This is your CSS variable
-// });
+const headingFont = localFont({
+  src: "../src/fonts/ClashGrotesk-Variable.ttf",
+  display: "swap",
+  variable: "--font-heading",
+});
 
 // const textFont = localFont({
 //   src: "../src/fonts/OpenSans.ttf", // ✅ Correct path from /src/app or /src/pages
@@ -29,7 +29,7 @@ import localFont from "next/font/local"; // ✅ You missed this import
 export default function App({ Component, pageProps }: AppProps) {
   return (
     // <main className={`${inter.variable} ${manrope.variable} ${headingFont.variable} ${textFont.variable} font-sans`}>
-    <main className={`font-sans`}>
+    <main className={`${headingFont.variable}`}>
       <Component {...pageProps} />
     </main>
   );

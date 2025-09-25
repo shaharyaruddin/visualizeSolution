@@ -98,14 +98,14 @@ const FAQ = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-6 headingFont">
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-6 font-heading">
             Frequently{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-[#288dc8]">
               Asked Questions
             </span>
           </h2>
 
-          <p className="text-black max-w-2xl mx-auto text-lg textFont">
+          <p className="text-black max-w-2xl mx-auto text-lg font-manrope">
             Find answers to common questions about our services and process.
           </p>
           <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full" />

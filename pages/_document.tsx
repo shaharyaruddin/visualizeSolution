@@ -16,6 +16,10 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3B82F6" />
         <link rel="apple-touch-icon" href="/logo-icon.svg" />
+          <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
 
         {/* Schema.org markup for Google */}
         <script

@@ -1,323 +1,155 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useRouter } from "next/router";
+import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
-interface NavItem {
-  label: string;
-  href: string;
-  children?: Array<{ label: string; href: string }>;
-}
-
-interface MobileMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
-  navItems: NavItem[];
-  activeSection: string;
-}
-
-const MobileSubmenuItem: React.FC<{ item: NavItem; onClose: () => void }> = ({
-  item,
-  onClose,
-}) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="mb-2">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full text-amber-200/80 hover:text-amber-400 hover:bg-amber-500/10 py-3 px-4 rounded-xl transition-all text-lg font-medium border border-transparent hover:border-amber-500/20"
-      >
-        <span>{item.label}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-1 mt-1"
-          >
-            {item.children?.map((child, index) => (
-              <a
-                key={index}
-                href={child.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const targetId = child.href.substring(1);
-                  const targetElement = document.getElementById(targetId);
-                  if (targetElement) {
-                    const yOffset = -80;
-                    const y =
-                      targetElement.getBoundingClientRect().top +
-                      window.pageYOffset +
-                      yOffset;
-                    window.scrollTo({ top: y, behavior: "auto" });
-                  }
-                  onClose();
-                }}
-                className="flex items-center text-amber-200/80 hover:text-amber-400 hover:bg-amber-500/10 py-2 px-6 rounded-xl transition-all text-base w-full border border-transparent hover:border-amber-500/10"
-              >
-                {child.label}
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const MobileMenu: React.FC<MobileMenuProps> = ({
-  isOpen,
-  onClose,
-  navItems,
-  activeSection,
-}) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          // className="fixed inset-0 bg-black/90 backdrop-blur-md z-[99999] flex items-center justify-center overflow-y-auto"
-          className="fixed inset-0 bg-black/90 backdrop-blur-md z-[99999] flex items-center justify-center overflow-y-auto h-screen"
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="relative w-[95%] max-w-lg bg-black/80 backdrop-blur-lg border border-amber-500/20 rounded-2xl p-6 my-4 shadow-2xl overflow-y-auto max-h-[90vh]"
-          >
-            <div className="absolute right-4 top-4">
-              <Button
-                variant="ghost"
-                onClick={onClose}
-                className="text-amber-200/80 hover:bg-amber-500/10 rounded-full w-10 h-10 p-0 flex items-center justify-center"
-              >
-                <X className="w-5 h-5" />
-              </Button>
-            </div>
-
-            <div className="flex justify-center mb-8 mt-2">
-              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 font-heading tracking-tighter">
-                Koshi<span className="font-light">Labs</span>
-              </span>
-            </div>
-
-            <nav className="space-y-3">
-              {navItems.map((item, index) =>
-                item.children ? (
-                  <MobileSubmenuItem
-                    key={index}
-                    item={item}
-                    onClose={onClose}
-                  />
-                ) : (
-                  <a
-                    key={index}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const targetId = item.href.substring(1);
-                      const targetElement = document.getElementById(targetId);
-                      if (targetElement) {
-                        const yOffset = -80;
-                        const y =
-                          targetElement.getBoundingClientRect().top +
-                          window.pageYOffset +
-                          yOffset;
-                        window.scrollTo({ top: y, behavior: "auto" });
-                      }
-                      onClose();
-                    }}
-                    className={cn(
-                      "flex items-center w-full justify-center text-amber-200/80 hover:text-amber-400 hover:bg-amber-500/10 py-4 px-4 rounded-xl transition-all text-lg font-medium border border-transparent hover:border-amber-500/20",
-                      activeSection === item.href.substring(1)
-                        ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
-                        : ""
-                    )}
-                  >
-                    {item.label}
-                  </a>
-                )
-              )}
-            </nav>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const router = useRouter();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    {
+      label: "Our Services",
+      href: "/services",
+      children: [
+        { label: "Web Development", href: "/services/development" },
+        { label: "UI/UX Design and Development", href: "/services/designing" },
+        {
+          label: "CMS (WordPress & Shopify)",
+          href: "/services/cms-wordpress-shopify",
+        },
+        { label: "Digital Marketing", href: "/services/digital-marketing" },
+        { label: "SEO (Search Engine Optimization)", href: "/services/seo" },
+      ],
+    },
     { label: "Portfolio", href: "/portfolio" },
-    // { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contact" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useLayoutEffect(() => {
-    const checkScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    checkScroll(); // check immediately on mount
-    window.addEventListener("scroll", checkScroll, { passive: true });
-    return () => window.removeEventListener("scroll", checkScroll);
-  }, []);
-
   return (
-    <>
-      {isMobile ? (
-        <motion.nav
-          ref={navRef}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed top-0 left-0 right-0 z-40 bg-black/90 backdrop-blur-md shadow-lg transition-all duration-300"
-        >
-          <div className="flex items-center justify-between px-4 py-3">
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("home")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 font-heading"
-            >
-              Visualize<span className="font-light">Solutions</span>
-            </a>
-            <Button
-              variant="ghost"
-              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-amber-200/80 hover:bg-amber-500/10 rounded-full w-10 h-10 p-0 flex items-center justify-center"
-            >
-              <Menu className="w-5 h-5" />
-            </Button>
-          </div>
-        </motion.nav>
-      ) : (
-        <motion.nav
-          ref={navRef}
-          initial={false}
-          animate={{
-            opacity: 1,
-            y: 0,
-            // width: isScrolled ? "100%" : "40%",
-            width:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? "100%"
-                : isScrolled
-                ? "100%"
-                : "50%",
-            borderRadius:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? "70px"
-                : isScrolled
-                ? "0px"
-                : "100px",
-            top:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? "5px"
-                : isScrolled
-                ? "0px"
-                : "9px",
-          }}
-          transition={{
-            width: { duration: 0.6, ease: "easeInOut" },
-            y: { duration: 0.4, ease: "easeOut" },
-            opacity: { duration: 0.3 },
-          }}
-          className={cn(
-            "z-50 top-3 left-0 right-0 mx-auto fixed bg-gradient-to-r from-white to-gray-100 border border-gray-200",
-            isScrolled ? "h-[70px]" : "h-[70px]"
-          )}
-        >
-          <div className="flex gap-10 items-center justify-between px-6 py-3 max-w-7xl mx-auto">
-            <motion.span
-              className="text-3xl cursor-pointer font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 font-heading tracking-tighter inline-block relative"
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              onClick={() => router.push("/")}
-            >
-              Visualize<span className="font-light">Solution</span>
-              <motion.div
-                className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                initial={{ scaleX: 0, opacity: 0 }}
-                whileHover={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.span>
-            <div className="flex space-x-4">
-              {navItems.map((item, index) => (
+    <nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-50 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-14 items-center">
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            <img
+              src="/assets/main-logo.png"
+              alt="Logo"
+              className="h-16 w-40 sm:h-20 sm:w-48 md:h-18 md:w-56 object-cover"
+            />
+          </a>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item, i) =>
+              item.children ? (
+                <div key={i} className="relative group">
+                  {/* Parent Link */}
+                  <a
+                    href={item.href}
+                    className="flex items-center text-gray-800 hover:text-[#288dc8] font-manrope text-[17px]"
+                  >
+                    {item.label}
+                    <ChevronDown className="ml-1 w-4 h-4" />
+                  </a>
+
+                  {/* Dropdown */}
+                  <div
+                    className="absolute left-0 top-full hidden group-hover:block 
+               bg-white shadow-md rounded-md w-[280px] z-50"
+                  >
+                    {item.children.map((child, j) => (
+                      <a
+                        key={j}
+                        href={child.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 whitespace-nowrap font-manrope text-[15px]"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
                 <a
-                  key={index}
+                  key={i}
                   href={item.href}
-                  className={cn(
-                    "px-4 py-2 rounded-full transition-all text-md font-medium textFont",
-                    router.pathname === item.href
-                      ? "text-black bg-gray-200"
-                      : "text-black hover:bg-gray-200"
-                  )}
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   const section = document.getElementById(item.href.slice(1));
-                  //   section?.scrollIntoView({ behavior: "smooth" });
-                  // }}
+                  className="text-gray-800 hover:text-[#288dc8] font-manrope text-[17px]"
                 >
                   {item.label}
                 </a>
-              ))}
-            </div>
+              )
+            )}
           </div>
-        </motion.nav>
-      )}
 
-      {/* Mobile Slide Menu */}
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-        navItems={navItems}
-        activeSection=""
-      />
-    </>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md px-4 pb-4 space-y-2">
+          {navItems.map((item, i) =>
+            item.children ? (
+              <div key={i}>
+                <button
+                  onClick={() =>
+                    setOpenDropdown(
+                      openDropdown === item.label ? null : item.label
+                    )
+                  }
+                  className="w-full flex justify-between items-center py-2 text-gray-800 font-manrope"
+                >
+                  {item.label}
+                  <ChevronDown
+                    className={`ml-2 w-4 h-4 transform ${
+                      openDropdown === item.label ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openDropdown === item.label && (
+                  <div className="pl-4 space-y-1">
+                    {item.children.map((child, j) => (
+                      <a
+                        key={j}
+                        href={child.href}
+                        className="block py-1 text-gray-600 hover:text-green-600"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a
+                key={i}
+                href={item.href}
+                className="block py-2 text-gray-800 hover:text-green-600 font-manrope"
+              >
+                {item.label}
+              </a>
+            )
+          )}
+          <a
+            href="/book"
+            className="block text-center bg-green-600 text-white py-2 rounded-md hover:bg-green-700"
+          >
+            Book a Meeting
+          </a>
+        </div>
+      )}
+    </nav>
   );
 };
 

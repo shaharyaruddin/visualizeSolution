@@ -39,45 +39,41 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       >
         {/* Enhanced header with hover effect */}
         <Link href={`/services/${service.slug}`}>
-        <div className="mb-4 relative">
-          <motion.div
-            initial={{ opacity: 0.1 }}
-            animate={{ opacity: 0.1 }}
-            whileHover={{ opacity: 0.2, rotate: 5 }}
-            className="absolute right-0 top-0"
-          >
-            {React.cloneElement(service.icon, {
-              className: "w-20 h-20 text-current",
-            })}
-          </motion.div>
-
-          <div className="relative">
-           <motion.div
-  whileHover={{ scale: 1.1, x: 5 }}
-  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-  className="inline-block mb-3 text-white"
->
-              {React.cloneElement(service.icon, { className: "w-12 h-12" })}
+          <div className="mb-4 relative">
+            <motion.div
+              initial={{ opacity: 0.1 }}
+              animate={{ opacity: 0.1 }}
+              whileHover={{ opacity: 0.2, rotate: 5 }}
+              className="absolute right-0 top-0"
+            >
+              {React.cloneElement(service.icon, {
+                className: "w-20 h-20 text-current",
+              })}
             </motion.div>
 
-            <h3 className="text-xl font-bold text-white mb-1 headingFont">
-              {service.title}
-            </h3>
-            <motion.div
-              className="h-1 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-3"
-              whileHover={{ width: "40%", transition: { duration: 0.3 } }}
-            />
-        <p className="text-gray-300 mb-5 textFont">{service.description}</p>
+            <div className="relative">
+              <motion.div
+                whileHover={{ scale: 1.1, x: 5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="inline-block mb-3 text-white"
+              >
+                {React.cloneElement(service.icon, { className: "w-12 h-12" })}
+              </motion.div>
 
+              <h3 className="text-xl font-medium text-white mb-1 font-heading">
+                {service.title}
+              </h3>
+              <motion.div
+                className="h-1 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-3"
+                whileHover={{ width: "40%", transition: { duration: 0.3 } }}
+              />
+              <p className="text-gray-300 mb-5 font-manrope">
+                {service.description}
+              </p>
+            </div>
           </div>
-
-
-        </div>
         </Link>
-
       </motion.div>
-
-    
     </>
   );
 };

@@ -147,8 +147,9 @@ const Services = () => {
         ]}
       />
 
-      <h2 className="text-4xl font-bold text-center text-black mb-16 relative z-[1] headingFont">
-        Our Services
+      <h2 className="text-4xl font-bold text-center text-black mb-16 relative z-[1] font-heading">
+        Our
+        <span className="text-[#288dc8]"> Services</span>
         <div className="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-[1]">

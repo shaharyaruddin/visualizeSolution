@@ -79,10 +79,10 @@ const ContactForm: React.FC = () => {
   return (
     <Card className="bg-black bg-gradient-to-br from-black via-gray-900 to-amber-900/20 shadow-lg rounded-2xl">
       <CardHeader>
-        <CardTitle className="text-white text-3xl font-semibold fontHeading">
+        <CardTitle className="text-white text-3xl font-semibold font-heading">
           Get in Touch
         </CardTitle>
-        <CardDescription className="text-white text-lg textFont">
+        <CardDescription className="text-white text-lg font-manrope">
           Send us a message and we'll get back to you.
         </CardDescription>
       </CardHeader>
@@ -92,7 +92,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-4">
               <label
                 htmlFor="name"
-                className="block text-white text-lg font-medium textFont"
+                className="block text-white text-lg font-medium font-manrope"
               >
                 Name
               </label>
@@ -110,7 +110,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-4">
               <label
                 htmlFor="email"
-                className="block text-white text-lg font-medium textFont"
+                className="block text-white text-lg font-medium font-manrope"
               >
                 Email
               </label>
@@ -127,7 +127,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-4">
               <label
                 htmlFor="phone"
-                className="block text-white text-lg font-medium textFont"
+                className="block text-white text-lg font-medium font-manrope"
               >
                 Phone
               </label>
@@ -145,7 +145,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-4">
               <label
                 htmlFor="message"
-                className="block white text-lg font-medium text-white textFont"
+                className="block white text-lg font-medium text-white font-manrope"
               >
                 Message
               </label>
@@ -177,7 +177,7 @@ const ContactForm: React.FC = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-white text-black hover:from-amber-500 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-amber-500/30 text-lg py-3 rounded-full font-semibold"
+              className="w-full bg-white text-black hover:from-amber-500 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-amber-500/30 text-lg py-3 rounded-full font-semibold font-heading"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>

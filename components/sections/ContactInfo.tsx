@@ -11,7 +11,7 @@ const ContactInfo = () => {
       viewport={{ once: true }}
       className="space-y-8 text-black"
     >
-      <h3 className="text-2xl font-semibold text-black mb-6 border-b border-amber-500/20 pb-4 headingFont">
+      <h3 className="text-2xl font-semibold text-black mb-6 border-b border-amber-500/20 pb-4 font-heading">
         Contact Information
       </h3>
       <motion.div
@@ -23,8 +23,8 @@ const ContactInfo = () => {
           <MapPin className="w-5 h-5 text-black" />
         </div>
         <div>
-          <p className="text-black mb-1 font-semibold textFont">Address</p>
-          <p className="group-hover:text-black transition-colors textFont">
+          <p className="text-black mb-1 font-semibold font-heading">Address</p>
+          <p className="group-hover:text-black transition-colors font-manrope">
             Birtamod, Koshi Province, Nepal
           </p>
         </div>
@@ -39,11 +39,11 @@ const ContactInfo = () => {
           <Phone className="w-5 h-5 text-black" />
         </div>
         <div>
-          <p className="font-semibold text-black mb-1 textFont">Phone</p>
+          <p className="font-semibold text-black mb-1 font-heading">Phone</p>
           <a
             href="tel:+9779817996672"
             aria-label="Call +977 9817996672"
-            className="group-hover:text-black transition-colors textFont"
+            className="group-hover:text-black transition-colors font-manrope"
           >
             +977 9817996672
           </a>
@@ -59,11 +59,11 @@ const ContactInfo = () => {
           <Mail className="w-5 h-5 text-black" />
         </div>
         <div>
-          <p className="font-semibold text-black mb-1 textFont">Email</p>
+          <p className="font-semibold text-black mb-1 font-heading">Email</p>
           <a
             href="mailto:admin@koshilabs.com"
             aria-label="Email admin@koshilabs.com"
-            className="group-hover:text-black transition-colors textFont"
+            className="group-hover:text-black transition-colors font-manrope"
           >
             contact@visualizesolution.com
           </a>
@@ -79,8 +79,8 @@ const ContactInfo = () => {
           <Globe className="w-5 h-5 text-black" />
         </div>
         <div>
-          <p className="font-semibold text-black mb-1 textFont">Website</p>
-          <p className="group-hover:text-black transition-colors textFont">
+          <p className="font-semibold text-black mb-1 font-heading">Website</p>
+          <p className="group-hover:text-black transition-colors font-manrope">
             www.visualizesolution.com
           </p>
         </div>
