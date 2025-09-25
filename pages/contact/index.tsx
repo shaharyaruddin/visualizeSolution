@@ -17,7 +17,7 @@ const Contact = () => {
   };
 
   return (
-    <PageWrapper title="Contact | KoshiLabs">
+    <PageWrapper title="Contact | Visualize Solution">
       <section id="contact" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
           <FloatingSVGGroup

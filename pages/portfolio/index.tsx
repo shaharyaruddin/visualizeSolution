@@ -90,7 +90,7 @@ const Portfolio = ({ listOfPortfolio }: any) => {
   // }, []);
 
   return (
-    <PageWrapper title="Portfolio | KoshiLabs">
+    <PageWrapper title="Portfolio | Visualize Solution">
       <section
         id="portfolio"
         ref={sectionRef}

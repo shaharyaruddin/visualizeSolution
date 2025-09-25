@@ -30,9 +30,9 @@ export default function Document() {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Visualize Solution Pvt. Ltd.",
-              alternateName: "KoshiLabs",
-              url: "https://koshilabs.com",
-              logo: "https://koshilabs.com/logo.png",
+              alternateName: "Visualize Solution",
+              url: "https://Visualize Solution.com",
+              logo: "https://Visualize Solution.com/logo.png",
               description:
                 "Leading software development company in Birtamode, Jhapa, Nepal specializing in custom software development, AI solutions, web applications, and digital transformation services.",
               address: {
@@ -47,7 +47,7 @@ export default function Document() {
                 "@type": "ContactPoint",
                 telephone: "+977-9817996672",
                 contactType: "customer service",
-                email: "admin@koshilabs.com",
+                email: "admin@Visualize Solution.com",
                 availableLanguage: ["English", "Nepali"],
               },
               openingHoursSpecification: [
@@ -71,8 +71,8 @@ export default function Document() {
                 },
               ],
               sameAs: [
-                "https://www.facebook.com/koshilabs",
-                "https://www.linkedin.com/company/koshilabs",
+                "https://www.facebook.com/Visualize Solution",
+                "https://www.linkedin.com/company/Visualize Solution",
               ],
             }),
           }}

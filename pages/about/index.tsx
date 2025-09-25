@@ -10,7 +10,8 @@ const About = () => {
   const ctaRef = useRef(null);
 
   return (
-    <PageWrapper title="About | KoshiLabs">
+    <PageWrapper title="About | Visualize Solution">
+      
       <section className="  text-black w-full py-16">
         <div className="relative text-center mb-20 mt-12">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-black to-gray-600 text-transparent bg-clip-text headingFont">

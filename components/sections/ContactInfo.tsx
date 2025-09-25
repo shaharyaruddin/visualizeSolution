@@ -61,9 +61,15 @@ const ContactInfo = () => {
         <div>
           <p className="font-semibold text-black mb-1 font-heading">Email</p>
           <a
+<<<<<<< HEAD
             href="mailto:admin@koshilabs.com"
             aria-label="Email admin@koshilabs.com"
             className="group-hover:text-black transition-colors font-manrope"
+=======
+            href="mailto:admin@Visualize Solution.com"
+            aria-label="Email admin@Visualize Solution.com"
+            className="group-hover:text-black transition-colors textFont"
+>>>>>>> b405236b3e159dff77677d2230013ca2ed4e2d91
           >
             contact@visualizesolution.com
           </a>
