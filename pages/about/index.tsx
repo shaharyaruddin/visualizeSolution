@@ -28,6 +28,7 @@ const About = () => {
         </div>
 
         {/* Mission Section */}
+        
         <div
           ref={missionRef}
           className="relative z-10 max-w-4xl mx-auto text-center mb-24"
